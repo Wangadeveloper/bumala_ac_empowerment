@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='profile.css')}}">
+{% endblock %}
+
+{% block title %}Complete Your Profile{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Complete Your Profile</h1>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="full_names">Full Name</label>
+            {{ form.full_names(class="form-control") }}
+
+            <label for="email">Email</label>
+            {{ form.email(class="form-control") }}
+
+            <label for="phone">Phone Number</label>
+            {{ form.phone(class="form-control") }}
+
+            <label for="country">Country</label>
+            {{ form.country(class="form-control") }}
+
+            <label for="location">Location / Residence</label>
+            {{ form.location(class="form-control") }}
+        </fieldset>
+
+        <!-- Financial Information -->
+        <fieldset>
+            <legend>Financial Information</legend>
+
+            <label for="savings_category">Preferred Savings Category</label>
+            <select name="savings_category" id="savings_category" class="form-control">
+                <option value="">-- Select Savings Category --</option>
+                <option value="weekly">Weekly Contribution</option>
+                <option value="monthly">Monthly Contribution</option>
+            </select>
+
+            <label for="payment_level">Payment Level</label>
+            <select name="payment_level" id="payment_level" class="form-control">
+                <option value="">-- Select Payment Level --</option>
+                <option value="1">Level 1 - KSh 100</option>
+                <option value="2">Level 2 - KSh 200</option>
+                <option value="3">Level 3 - KSh 300</option>
+                <option value="4">Level 4 - KSh 400</option>
+                <option value="5">Level 5 - KSh 500</option>
+            </select>
+
+            <label for="goals">Financial Goals / Notes</label>
+            <textarea name="goals" id="goals" class="form-control" placeholder="Optional: your goals or notes"></textarea>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Member Dashboard{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='account_info.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='drop.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="we-bar">
+    <div class="left-links">
+        <a href="{{url_for('main.home')}}" class="nav-link">🏠 Home</a>
+    </div>
+    <div class="right-links">
+        <a id="logout" href="{{url_for('main.logout')}}" class="btn-logout">🚪 Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <div>
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}}">{{message}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Top Welcome Section -->
+    <!-- Top Welcome Section -->
+<div class="upper-sec">
+    <img src="{{url_for('static', filename='bank.png')}}" alt="member_icon">
+    <h2>
+        Welcome, {{ current_user.username }} 👋 <br>
+        You are a valued member of <b>Bumala AC Empowerment</b>.<br>
+        {% if not current_user.profile_completed %}
+            <a href="{{ url_for('main.profile') }}" 
+               style="
+                  display:inline-block;
+                  padding: 15px 25px;
+                  background-color:#ff5722;
+                  color:white;
+                  font-weight:bold;
+                  border-radius:8px;
+                  text-decoration:none;
+                  margin-top:10px;
+                  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+                  transition:0.3s;"
+               onmouseover="this.style.backgroundColor='#e64a19'"
+               onmouseout="this.style.backgroundColor='#ff5722'">
+               ⚠ Complete Your Profile Now
+            </a>
+        {% else %}
+            <p>Profile updated. Contact admin for any profile changes.</p>
+        {% endif %}
+    </h2>
+</div>
+
+
+    <div class="middle">
+        <!-- Personal Info -->
+        <div class="middle1">
+            <h1><u>Member Information</u></h1>
+            <span>Full Name: {{ current_user.full_names }}</span>
+            <span>Email: {{ current_user.email }}</span>
+            <span>Phone Number: {{ current_user.phone_no }}</span>
+            <span>Country: {{ current_user.country }}</span>
+            <span>Location: {{ current_user.location }}</span>
+        </div>
+
+        <!-- Contribution & Account Info -->
+        <div class="middle2">
+            <h1><u>Contribution Summary</u></h1>
+            <span>Total Contributions: KSh {{ total_contributions }}</span>
+        </div>
+
+        <!-- SACCO Services -->
+        <!-- SACCO Services -->
+<div class="middle3">
+    <h2><u><b>Member Services</b></u></h2>
+    <ul>
+        <li><a href="{{url_for('main.membership_loans')}}">Membership loans</a></li>
+        <li><a href="{{url_for('main.submit_contribution')}}">Submit contribution payment</a></li>
+        <li><a href="{{url_for('main.contribution_history')}}">Contribution history</a></li>
+
+        <!-- Show Loan Status link only if user has applied for a loan -->
+        {% set user_loan = current_user.profile.user_loans if current_user.profile else [] %}
+        {% if user_loan|length > 0 %}
+            <li><a href="{{url_for('main.loan_status')}}">Loan status & repayments</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+    </div>
+</div>
+{% endblock %}

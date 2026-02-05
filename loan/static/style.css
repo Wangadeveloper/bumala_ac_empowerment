@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 50px;
+    min-height: 100%;
+    width: 100%;
+}
+
+.mid-section {
+    top: 10px;
+    min-height: 41%;
+    width: 100%;
+    display: flex;              
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;         
+    background-color: #f0f9f4;  
+}
+
+.mid-section h1 {
+    font-size: 2rem;            
+    font-weight: 700;
+    color: #064635;             
+    margin-bottom: 20px;
+}
+
+.mid-section p {
+    font-size: 1.125rem;        
+    line-height: 1.6;
+    max-width: 800px;
+    color: #333;                
+    margin: 0 auto 15px;
+}
+
+.media {
+    min-height: 200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.media img {
+    height: 250px;
+    width: 300px;
+    padding-inline: 10px;
+}
+
+#hint {
+    text-align: center;
+    min-height: 3%;
+    color: brown;
+}
+
+.services {
+    min-height: 50%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* spacing between cards */
+}
+
+/* Service card style (3D look) */
+.services div {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 250px;
+}
+
+.services div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Service card titles */
+.services div h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Links inside service cards */
+.services div a {
+    display: block;
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.services div a:hover {
+    color: #e63946;
+    font-weight: bold;
+}
+
+#sentence {
+    font-size: 20px;
+}
+
+#here {
+    min-height: 5%;
+    width: 100%;
+}
+
+#marq {
+    font-size: 20px;
+}
+
+#here hr {
+    min-height: 5px;
+}
+
+/* -------------------- NAVBAR -------------------- */
+.we-bar {
+    background: linear-gradient(90deg, #007bff, #00b4d8);
+    padding: 12px 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Menu button (mobile only) */
+.menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Dropdown menu (mobile) */
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background: #fff;
+    color: #333;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    min-width: 160px;
+    padding: 10px 0;
+}
+
+.menu-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.menu-content a:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+/* Right side authentication buttons */
+.btn-auth {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: #064635;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.btn-auth:hover {
+    background: #046b45;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+}
+
+.btn-signup {
+    background: #e63946;
+}
+
+.btn-signup:hover {
+    background: #ff4d5a;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (min-width: 769px) {
+    .menu-btn { 
+        display: none; 
+    }
+
+   
+    .menu-content a { 
+        color: #fff; 
+        padding: 0 15px;    
+        font-weight: 600;
+    }
+
+    .menu-content a:hover { 
+        background: none; 
+        color: #ffd166; 
+    }
+}
+ .menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;   /* sits directly below the navbar */
+    left: 0;
+    background: #fff;
+    color: #333;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    min-width: 180px;
+    padding: 10px 0;
+    z-index: 999;  /* keep it above other elements */
+}
+
+@media (max-width: 768px) {
+    .menu-content a { font-size: 16px; }
+}

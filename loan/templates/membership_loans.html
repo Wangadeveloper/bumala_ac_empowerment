@@ -1,0 +1,19 @@
+<div style="max-width: 700px; margin: 30px auto; font-family: Arial, sans-serif;">
+
+    <!-- Go to Dashboard Button -->
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{{ url_for('main.user_account') }}" 
+           style="background-color: #007bff; color: white; padding: 10px 15px; 
+                  text-decoration: none; border-radius: 5px; font-weight: bold;">
+            🏠 Go to Dashboard
+        </a>
+    </div>
+
+    <!-- Loan Eligibility Card -->
+    <div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h3 style="margin-top: 0; color: #333;">Your Loan Eligibility</h3>
+        <p style="line-height: 1.6;"><strong>Saving Category:</strong> {{ payment_display }} – {{ savings_display }}</p>
+        <p style="line-height: 1.6;"><strong>Total Contributions:</strong> KES {{ total_contributions }}</p>
+        <p style="line-height: 1.6;"><strong>Maximum Loan Eligible:</strong> KES {{ max_loan }}</p>
+    </div>
+</div>

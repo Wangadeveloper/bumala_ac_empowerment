@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Contribution{% endblock %}
+
+{% block body %}
+<div style="max-width: 700px; margin: 30px auto; font-family: Arial, sans-serif;">
+
+    <!-- Go to Dashboard Button -->
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{{ url_for('main.user_account') }}" 
+           style="background-color: #007bff; color: white; padding: 10px 15px; 
+                  text-decoration: none; border-radius: 5px; font-weight: bold;">
+            🏠 Go to Dashboard
+        </a>
+    </div>
+
+    <h1 style="text-align: center; color: #333;">Submit Contribution Payment</h1>
+
+    <!-- Payment Instructions -->
+    <div style="border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: #f9f9f9;">
+        <h3 style="margin-top: 0;">Payment Instructions</h3>
+        <p style="line-height: 1.6;">
+            Pay your contribution to the SACCO account:<br>
+            <strong>M-Pesa Paybill:</strong> 123456<br>
+            <strong>Account Number:</strong> Your Phone Number
+        </p>
+    </div>
+
+    <!-- Contribution Form -->
+    <div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; background-color: #fefefe;">
+        <h3 style="margin-top: 0;">Confirm Your Payment</h3>
+        <form method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+            {{ form.hidden_tag() }}
+
+            <label for="amount" style="font-weight: bold;">Amount Paid (KES)</label>
+            {{ form.amount(style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;") }}
+
+            <label for="transaction_code" style="font-weight: bold;">Transaction Code</label>
+            {{ form.transaction_code(style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;") }}
+
+            <div style="margin-top: 10px;">
+                {{ form.submit(style="background-color: #28a745; color: white; padding: 10px 15px; 
+                                    border: none; border-radius: 5px; font-weight: bold; cursor: pointer;") }}
+            </div>
+        </form>
+
+        <p style="margin-top: 15px; color: #856404; background-color: #fff3cd; padding: 10px; border-radius: 5px;">
+            ⚠ Payments are verified by SACCO admins before reflecting on your balance.
+        </p>
+    </div>
+</div>
+{% endblock %}

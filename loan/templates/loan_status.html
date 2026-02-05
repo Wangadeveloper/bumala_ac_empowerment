@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Contribution History{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Contribution History</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount (KES)</th>
+                <th>Transaction Code</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10 Jan 2025</td>
+                <td>500</td>
+                <td>QFT6XYZ123</td>
+                <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr>
+                <td>03 Jan 2025</td>
+                <td>500</td>
+                <td>QFT6XYZ122</td>
+                <td><span class="status approved">Approved</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

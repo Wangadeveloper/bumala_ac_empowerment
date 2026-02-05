@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Contribution History{% endblock %}
+
+{% block body %}
+<div style="max-width: 900px; margin: 30px auto; font-family: Arial, sans-serif;">
+
+    <!-- Go to Dashboard Button -->
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{{ url_for('main.user_account') }}" 
+           style="background-color: #007bff; color: white; padding: 10px 15px; 
+                  text-decoration: none; border-radius: 5px; font-weight: bold;">
+            🏠 Go to Dashboard
+        </a>
+    </div>
+
+    <h1 style="text-align: center; margin-bottom: 20px; color: #333;">Contribution History</h1>
+
+    {% if contributions %}
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr style="background-color: #007bff; color: white;">
+                <th style="padding: 10px; border: 1px solid #ccc;">Date</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Amount (KES)</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Transaction Code</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contribution in contributions %}
+            <tr style="border-bottom: 1px solid #ccc;">
+                <td style="padding: 10px;">{{ contribution.created_at.strftime("%d %b %Y") }}</td>
+                <td style="padding: 10px;">{{ contribution.amount }}</td>
+                <td style="padding: 10px;">{{ contribution.transaction_code }}</td>
+                <td style="padding: 10px;">
+                    <span style="padding: 5px 10px; border-radius: 4px; color: white;
+                        {% if contribution.status.lower() == 'approved' %}
+                            background-color: #28a745;
+                        {% elif contribution.status.lower() == 'pending' %}
+                            background-color: #ffc107;
+                        {% else %}
+                            background-color: #dc3545;
+                        {% endif %}">
+                        {{ contribution.status }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="text-align: center; margin-top: 20px;">You have no contributions yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

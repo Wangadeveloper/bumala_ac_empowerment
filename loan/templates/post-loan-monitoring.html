@@ -1,0 +1,16 @@
+<div class="progress" style="width: {{ loan.progress_percent }}%;">
+    {{ loan.progress_percent }}%
+</div>
+
+<p><strong>Total Loan Amount:</strong> KES {{ loan.total_amount }}</p>
+<p><strong>Repaid Amount:</strong> KES {{ loan.repaid_amount }}</p>
+<p><strong>Remaining Balance:</strong> KES {{ loan.remaining_balance }}</p>
+
+<p><strong>Reminder:</strong> Next repayment due on 
+<strong>{{ loan.next_due_date }}</strong>.
+</p>
+
+<p><strong>Upcoming Due Date:</strong> 
+KES {{ loan.next_payment }} repayment on 
+<strong>{{ loan.next_due_date }}</strong>.
+</p>

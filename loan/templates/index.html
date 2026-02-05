@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}home{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='drop.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="we-bar">
+    <!-- Left side: Logo + Hamburger -->
+    <div class="left-links">
+        <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+        <div class="menu-content" id="menu-content">
+            <a href="{{url_for('main.home')}}" class="nav-link">🏠 Home</a>
+            <a href="#" class="nav-link">📩 Contact</a>
+            <a href="#" class="nav-link">❓ Help</a>
+        </div>
+    </div>
+
+    <!-- Right side: Sign in & Sign up always visible -->
+    <div class="right-links">
+        <a href="{{url_for('main.login')}}" class="btn-auth">🔑 Sign in</a>
+        <a href="{{url_for('main.register')}}" class="btn-auth btn-signup">📝 Sign up</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="mid-section">
+        <h1>Welcome to Bumala AC Class of 2020 Empowerment</h1>
+        <p id="sentence">
+            <b>
+                Bumala AC Class of 2020 Empowerment is a community-based savings and credit group built to 
+                empower members through disciplined saving, affordable loans, and shared 
+                financial growth.
+            </b>
+        </p>
+        <p id="sentence">
+            <b>
+                By contributing regularly and supporting one another, our members create 
+                opportunities for education, business growth, emergencies, and a better future 
+                for our community.
+            </b>
+        </p>
+    </div>
+
+    <div id="here">
+        <hr color="magenta" height>
+        <marquee id="marq" behavior="scroll" direction="left">
+            <i>save together • grow together • empower Bumala community</i>
+        </marquee>
+    </div>
+
+    <div class="media">
+        <img id="b" src="{{url_for('static',filename='kenyan-farmer.jpg')}}" alt="pic">
+        <img id="a" src="{{url_for('static',filename='school_chilldren.jpg')}}" alt="pic">
+        <img id="c" src="{{url_for('static',filename='saving.jpg')}}" alt="pic">
+        <img id="d" src="{{url_for('static',filename='afri.png')}}" alt="pic">
+    </div>
+
+    <h2 id="hint">
+        <u>Select a service to learn more</u>
+        <p>Register and log in to access full member services</p>
+    </h2>
+
+    <div class="services">
+        <div class="kra">
+            <h2><u>MEMBERSHIP LOANS</u></h2>
+            <ul>
+                <li><a href="{{url_for('main.login')}}">Education support loan</a></li>
+                <li><a href="{{url_for('main.login')}}">Small business loan</a></li>
+                <li><a href="{{url_for('main.login')}}">Emergency loan</a></li>
+                <li><a href="{{url_for('main.login')}}">Agricultural support loan</a></li>
+                <li><a href="{{url_for('main.login')}}">Member development loan</a></li>
+            </ul>
+        </div>
+
+        <div class="ntsa">
+            <h2><u>MEMBER SAVINGS</u></h2>
+            <ul>
+                <li><a href="{{url_for('main.login')}}">Weekly contribution savings</a></li>
+                <li><a href="{{url_for('main.login')}}">Monthly contribution savings</a></li>
+                <li><a href="{{url_for('main.login')}}">Group development savings</a></li>
+            </ul>
+        </div>
+        
+        <div class="tsc">
+            <h2><u>MEMBER SERVICES</u></h2>
+            <ul>
+                <li><a href="{{url_for('main.login')}}">Contribution tracking</a></li>
+                <li><a href="{{url_for('main.login')}}">Loan eligibility status</a></li>
+                <li><a href="{{url_for('main.login')}}">Payment history & records</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="{{url_for('static',filename='script.js')}}"></script>
+{% endblock %}
